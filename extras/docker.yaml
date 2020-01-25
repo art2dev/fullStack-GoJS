@@ -1,0 +1,22 @@
+criar_env: isolados (container)
+containers: expoe_portas (para comunicação)
+imagem: techs (conteinizadas)
+container: mesma_imagem_varios_env
+dockerHub: hub
+dockerfile: receita_de_uma_imagem (code)
+
+# parte de uma imagem
+FROM node:10
+
+# def paste e copy arquivos
+WORKDIR /usr/app
+COPY . ./
+
+# Install as dependencias
+RUN yarn
+
+# expoe as portas desejadas
+EXPOSE 3333
+
+# Executa a aplicaçao
+CMD yarn start

@@ -1,0 +1,17 @@
+json_web_token:
+  - autenticação
+
+  post http://api.com/sessions
+
+  {
+    "email": "eemail@mail.com",
+    "pass": "12345"
+  }
+
+  >> db if (ok) { return token }
+
+inside_token:
+  -
+    headers:
+    payload:
+    assinatura:

@@ -1,0 +1,68 @@
+ORM: Abstração de DB
+  - MVC:
+    tabelas viram models
+    users > User.js
+    companies > Company.js
+    projects > Project.js
+
+sequelize: Manipular (dados) by JS
+ -
+  INSERT INTO users (name, email)
+    VALUES (
+      "Allan Ramos",
+      "allansrc@protonmail.com"
+    )
+  -
+    User.create({
+      name: 'Allan Ramos',
+      email: 'allansrc@protonmail.com',
+    })
+
+    - SELECT * FROM users
+        WHERE email = "allansrc@gmail.com"
+        LIMIT 1
+    - User.finOne({
+      where: {
+        email: 'allansrc@gmail.com'
+      }
+    })
+
+migrations: CVDB (controle de versao para DB)
+ - contem:
+    - each: contem instruções para criar / alterar / remover (tab / Column)
+    - update: for every dev e em env de produção
+    - each: organizado por data
+
+  - em_dev: possivel desfazer uma migração
+  - em_prod: jamais alterada / editada
+  - for_each_tab: uma migration para cada tabela
+
+seeds: arquivos de população de dados para desenvolvimento
+  - usado_para: testes e exibição
+  - exec: roda apenas por codigo
+  - em_prod: jamais roda em produção (usar migration para produção)
+
+ACH_MVC:
+  separa_responsabilidades
+  - Model: abstração do DB, sem regra de negócio
+  - Controller: entry point da aplicação > responsável pela Regra
+  - View: retorno ao cliente (REST / ou não) a ser tratado pelo front (geralmente o json)
+
+
+  ---
+  Controller: 
+    - Classe
+    - retorna um json
+    - não chama outro controller / metodo
+    - qnd_cria_controller:
+      - max 5 metodos ({
+        class UserController {
+          index() {} // lista 
+          show() {} // exibe
+          store() {} // cadastra 
+          update() {} // altera
+          delete() {} // remove
+        }
+      })
+      - a cada entidade ()
+  ---
