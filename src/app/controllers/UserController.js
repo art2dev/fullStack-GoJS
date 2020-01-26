@@ -3,14 +3,17 @@
 //
 // edição de usuário
 // -- (yup) validação e confirmação de dados do usário
+//
+// p.s > adicionar validação na criação de sessao do usuário < feature
+//
+// Authenticação com JWT Token etc...
 
 import * as Yup from 'yup';
-
 import User from '../models/User';
 
 class UserController {
   async store(req, res) {
-    const schema = Yup.object({
+    const schema = Yup.object().shape({
       name: Yup.string().required(),
       email: Yup.string()
         .email()
