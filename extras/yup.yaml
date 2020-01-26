@@ -1,0 +1,14 @@
+yup: schema validator
+
+  yup doenst have a export default, so its needs to use
+  'import * as Yup from "yup"'
+
+  -
+    validar criação de usuario 1º
+    -
+      userController
+
+  -
+    ...
+
+      - ...
